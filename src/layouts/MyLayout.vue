@@ -93,7 +93,7 @@
             <q-avatar size="56px" class="q-mb-sm">
               <img src="https://cdn.quasar.dev/img/avatar2.jpg">
             </q-avatar>
-            <div class="text-weight-bold">Jane Done</div>
+            <div class="text-weight-bold">Jane Doe</div>
             <div>@janedoe</div>
           </div>
         </q-img>
