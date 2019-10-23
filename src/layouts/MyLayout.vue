@@ -16,7 +16,7 @@
             <!-- <q-badge floating color="red">3</q-badge> -->
           </q-btn>
           <q-toolbar-title style="margin-top: 5px; line-height: 16px;">
-            YOU<strong>GOLF</strong><br>
+            Q<strong>PLAY</strong><br>
             <span style="font-size: 14px;">Jane Doe</span>
           </q-toolbar-title>
 
