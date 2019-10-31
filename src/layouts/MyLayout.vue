@@ -30,7 +30,6 @@
             @click="right = !right"
             aria-label="Filter list"
             icon="mdi-tune"
-            style="background: transparent;"
           />
         </q-toolbar>
       </div>
@@ -38,9 +37,9 @@
 
     <q-drawer
       v-model="left"
+      mini
       show-if-above
       behavior="mobile"
-      :width="$q.screen.gt.xs ? 340 : 300"
       elevated
       content-class="navigation"
     >
@@ -101,9 +100,9 @@
     <q-drawer
       v-model="right"
       show-if-above
-      :width="$q.screen.gt.xs ? 340 : 300"
       :elevated="$q.screen.width <= 1024"
       side="right"
+      :transition="false"
       :breakpoint="1025"
       :content-class="`filters`"
     >
@@ -211,18 +210,16 @@
 import Vue from 'vue'
 export default Vue.extend({
   name: 'MyLayout',
-  data() {
-    return {
-      left: false,
-      right: false,
-      check1: true,
-      check2: false,
-      check3: false,
-      notif1: true,
-      notif2: true,
-      notif3: false,
-    }
-  },
+  data: () => ({
+    left: false,
+    right: false,
+    check1: true,
+    check2: false,
+    check3: false,
+    notif1: true,
+    notif2: true,
+    notif3: false,
+  }),
 })
 
 </script>

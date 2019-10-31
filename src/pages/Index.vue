@@ -1,5 +1,5 @@
 <template>
-  <q-page flex class="reviews-page" :style="qPageStyles">
+  <q-page flex class="reviews-page" :style-fn="pageStyle">
     <q-page-sticky position="top" expand style="z-index: 1;">
       <div class="row" style="width: 100%">
         <q-toolbar class="reviews-page--list-toolbar text-white">
@@ -72,12 +72,10 @@ export default Vue.extend({
   }),
   components: {},
   computed: {
-    qPageStyles() {
-      let styles: object = {
-        // paddingTop: this.$q.screen.lt.sm ? '100px' : '50px'
-      };
-
-      return styles;
+    pageStyle() {
+      return {
+        paddingTop: '50px'
+      }
     }
   },
   methods: {

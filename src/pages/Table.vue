@@ -1,10 +1,10 @@
 <template>
-  <q-page :style-fn="pageStyle">
+  <q-page class="page table-page" :style-fn="pageStyle">
     <q-page-sticky position="top" expand style="z-index: 1;">
       <div class="row" style="width: 100%">
-        <q-toolbar class="reviews-page--list-toolbar text-white">
+        <q-toolbar class="page--list-toolbar text-white">
           <q-toolbar-title>
-            {{ $t('reviews') }}
+            {{ $t('Reviews') }}
           </q-toolbar-title>
         </q-toolbar>
       </div>
@@ -13,14 +13,38 @@
     <q-table
       class="my-sticky-header-table full-height"
       :data="data"
-      dense
       :columns="columns"
+      dense
       row-key="name"
       separator="cell"
       hide-bottom
+      @selection="selection"
       :pagination="{ rowsPerPage: 0 }"
       flat
-    ></q-table>
+    >
+      <template v-slot:body="props">
+        <q-tr :props="props" @="selectedRow = props.row">
+            <q-td v-for="(col, index) in props.row" :key="index">{{ col }}</q-td>
+        </q-tr>
+      </template>
+    </q-table>
+
+    <q-menu touch-position context-menu auto-close transition-show="none" transition-hide="none">
+      <q-list>
+          <q-item v-if="selectedRow">
+              <q-item-label>{{ selectedRow.label }}</q-item-label>
+          </q-item>
+          <q-item clickable>
+              <q-item-section>Öppna</q-item-section>
+          </q-item>
+          <q-item clickable>
+              <q-item-section>Skriv ut</q-item-section>
+          </q-item>
+          <q-item clickable>
+              <q-item-section>Flytta</q-item-section>
+          </q-item>
+        </q-list>
+      </q-menu>
   </q-page>
 </template>
 
@@ -29,6 +53,7 @@ import Vue from 'vue'
 export default Vue.extend({
   data() {
     return {
+      selectedRow: null,
       columns: [
         {
           name: 'name',
@@ -75,13 +100,6 @@ export default Vue.extend({
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10)
         },
         { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
-        { name: 'carbs', label: 'Carbs (g)', field: 'carbs', sortable: true },
-        {
-          name: 'protein',
-          label: 'Protein (g)',
-          field: 'protein',
-          sortable: true
-        },
       ],
 
       data: [
@@ -536,19 +554,172 @@ export default Vue.extend({
           iron: '22%'
         },
         {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          sodium: 54,
-          calcium: '12%',
-          iron: '6%'
-        }
+          name: 'Honeycomb',
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          sodium: 562,
+          calcium: '0%',
+          iron: '45%'
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          sodium: 326,
+          calcium: '2%',
+          iron: '22%'
+        },
+        {
+          name: 'Honeycomb',
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          sodium: 562,
+          calcium: '0%',
+          iron: '45%'
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          sodium: 326,
+          calcium: '2%',
+          iron: '22%'
+        },
+        {
+          name: 'Honeycomb',
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          sodium: 562,
+          calcium: '0%',
+          iron: '45%'
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          sodium: 326,
+          calcium: '2%',
+          iron: '22%'
+        },
+        {
+          name: 'Honeycomb',
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          sodium: 562,
+          calcium: '0%',
+          iron: '45%'
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          sodium: 326,
+          calcium: '2%',
+          iron: '22%'
+        },
+        {
+          name: 'Honeycomb',
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          sodium: 562,
+          calcium: '0%',
+          iron: '45%'
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          sodium: 326,
+          calcium: '2%',
+          iron: '22%'
+        },
+        {
+          name: 'Honeycomb',
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          sodium: 562,
+          calcium: '0%',
+          iron: '45%'
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          sodium: 326,
+          calcium: '2%',
+          iron: '22%'
+        },
+        {
+          name: 'Honeycomb',
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          sodium: 562,
+          calcium: '0%',
+          iron: '45%'
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          sodium: 326,
+          calcium: '2%',
+          iron: '22%'
+        },
+        {
+          name: 'Honeycomb',
+          calories: 408,
+          fat: 3.2,
+          carbs: 87,
+          protein: 6.5,
+          sodium: 562,
+          calcium: '0%',
+          iron: '45%'
+        },
+        {
+          name: 'Donut',
+          calories: 452,
+          fat: 25.0,
+          carbs: 51,
+          protein: 4.9,
+          sodium: 326,
+          calcium: '2%',
+          iron: '22%'
+        },
       ]
     };
   },
   methods: {
+    selection(sel) {
+      this.selectedRow = sel.row;
+    },
     pageStyle(offset: number) {
       // "offset" is a Number (pixels) that refers to the total
       // height of header + footer that occupies on screen,
@@ -557,34 +728,44 @@ export default Vue.extend({
       // this is actually what the default style-fn does in Quasar
 
       const h = offset ? `calc(100vh - ${offset}px)` : '100vh';
-      return { height: h, minHeight: h, maxHeight: h };
+      return {
+        height: h,
+        minHeight: h,
+        maxHeight: h
+      };
     }
   }
 })
 </script>
 
 <style lang="scss" scoped>
-.reviews-page--list-toolbar {
-  background-color: hsl(0, 50%, 50%);
-}
-.my-sticky-header-table {
-  /* max height is important */
+.page {
   padding-top: 50px;
-  /deep/.q-table__middle {
-    max-height: 100%;
+
+  .page--list-toolbar {
+    background-color: hsl(0, 50%, 50%);
   }
 
-  /deep/.q-table__top,
-  /deep/.q-table__bottom,
-  /deep/thead tr:first-child th { /* bg color is important for th; just specify one */
-    background-color: hsla(0, 0, 75%, 1);
-  }
+  &.table-page {
+    .my-sticky-header-table {
+      /* max height is important */
+      /deep/.q-table__middle {
+        max-height: 100%;
+      }
 
-  /deep/thead tr:first-child th {
-    position: sticky;
-    top: 0;
-    opacity: 1;
-    z-index: 1;
+      /deep/.q-table__top,
+      /deep/.q-table__bottom,
+      /deep/thead tr:first-child th { /* bg color is important for th; just specify one */
+        background-color: hsla(0, 0, 75%, 1);
+      }
+
+      /deep/thead tr:first-child th {
+        position: sticky;
+        top: 0;
+        opacity: 1;
+        z-index: 1;
+      }
+    }
   }
 }
 </style>
